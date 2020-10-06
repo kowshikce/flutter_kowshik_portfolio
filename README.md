@@ -1,6 +1,8 @@
 # flutter_kowshik_portfolio
 
-A new Flutter application.
+Personal Portfolio Flutter App!!
+
+![Screenshot_২০২০১০০৬_২৩৪১৫৯](https://user-images.githubusercontent.com/49833043/95251749-cc630200-083d-11eb-9dfc-7147ebab82b9.png)
 
 ## Getting Started
 
