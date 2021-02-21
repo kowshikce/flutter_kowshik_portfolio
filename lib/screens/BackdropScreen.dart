@@ -1,5 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../screens/AboutmeScreen.dart';
+import '../screens/HomeScreen.dart';
+import '../screens/WorkScreen.dart';
+import '../screens/ExperienceScreen.dart';
+import '../screens/FrameworkScreen.dart';
+import '../screens/SkillScreen.dart';
+import '../screens/ClientsScreen.dart';
+import '../screens/ContactScreen.dart';
 
 class BackdropScreen extends StatefulWidget {
   static const _PANEL_HEADER_HEIGHT = 32.0;
@@ -86,7 +94,7 @@ class _BackdropScreenState extends State<BackdropScreen>
                     height: BackdropScreen._PANEL_HEADER_HEIGHT,
                     child: Center(
                       child: Text(
-                        "Kowshikce.xyz",
+                        "Before After Slider Demonstration",
                         style: const TextStyle(
                             color: Colors.green,
                             fontWeight: FontWeight.w600,
@@ -94,87 +102,27 @@ class _BackdropScreenState extends State<BackdropScreen>
                       ),
                     ),
                   ),
+                  TabPageSelector(
+                    controller: DefaultTabController.of(context),
+                    selectedColor: Colors.white,
+                    indicatorSize: 8,
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Expanded(
-                      child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          child: Stack(children: [
-                            Image.asset(
-                              "assets/images/kowshik.jpg",
-                              fit: BoxFit.cover,
-                            ),
-                            Positioned(
-                              child: Container(
-                                decoration:
-                                    BoxDecoration(color: Colors.black54),
-                                child: Text(
-                                  "App And Web Developer",
-                                  style: const TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w400,
-                                      fontStyle: FontStyle.italic,
-                                      color: Colors.amber),
-                                ),
-                              ),
-                              bottom: 180,
-                              left: 0,
-                            ),
-                            Positioned(
-                              child: Container(
-                                decoration:
-                                    BoxDecoration(color: Colors.black54),
-                                child: Text(
-                                  "Flutter & Django Apps Developer",
-                                  style: const TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w400,
-                                      fontStyle: FontStyle.italic,
-                                      color: Colors.amber),
-                                ),
-                              ),
-                              bottom: 130,
-                              right: 0,
-                            ),
-                          ]),
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(18.0),
-                              topRight: Radius.circular(18.0)),
-                        ),
-                        ListTile(
-                            leading: Icon(
-                              Icons.crop,
-                              size: 30,
-                              color: Colors.white,
-                            ),
-                            title: Text("About.me",
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                    fontStyle: FontStyle.italic)),
-                            subtitle: Container(
-                              child: Column(
-                                children: [
-                                  Divider(),
-                                  Text(
-                                    "INSPIRED BY DIFFERENCE                                                                                      ",
-                                    style: const TextStyle(color: Colors.white),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                  Divider(),
-                                  Text(
-                                    "HEY , I AM KOWSHIK GUNGULY, I AM A WEB DESIGNER AND DEVELOPER ALSO INTERESTED IN ANDROID-IOS  UI DESIGN AND DEVELOPMENT.",
-                                    style: const TextStyle(color: Colors.green),
-                                  ),
-                                  Divider(),
-                                  Text(
-                                      "Client Satisfaction is my first Priority. My Spaciality is my Excellence .I have some extra skills. e.g. Creative Graphic Design, Android App Development, Software Development etc. Core Skills: WordPress, WordPress theme Customization, WordPress plugin installation, WordPress Error fixes, Web Design, App Design, Website Development, Android App Development, Graphic Design, Office Application Expert."),
-                                ],
-                              ),
-                            ))
-                      ],
-                    ),
+                      child: TabBarView(
+                    children: [
+                      AboutMeScreen(),
+                      HomeScreen(),
+                      WorkScreen(),
+                      ExperienceScreen(),
+                      FrameworkScreen(),
+                      SkillScreen(),
+                      ClientScreen(),
+                      ContactScreen(),
+                    ],
+                    physics: BouncingScrollPhysics(),
                   ))
                 ],
               ),
@@ -202,6 +150,7 @@ class _BackdropScreenState extends State<BackdropScreen>
         ),
         actions: [
           IconButton(
+            onPressed: () {},
             icon: CircleAvatar(
               backgroundImage: AssetImage("assets/images/kowshik112.png"),
               backgroundColor: Color(0xFF7e7d9c),
@@ -209,8 +158,11 @@ class _BackdropScreenState extends State<BackdropScreen>
           )
         ],
       ),
-      body: LayoutBuilder(
-        builder: _buildStack,
+      body: DefaultTabController(
+        length: 8,
+        child: LayoutBuilder(
+          builder: _buildStack,
+        ),
       ),
     );
   }
